@@ -100,6 +100,7 @@ discover-movies/
         Name              Role
 - 1. Ermiyas Getachew – Team leader
 - 2. Kalkidan Asmamaw - Member
+  3. Christian Amare - Member
 -
 -
 -
