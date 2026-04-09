@@ -14,6 +14,83 @@ body {
   );
 }
 
+body.light {
+  color: #111;
+  background: linear-gradient(135deg, #f4f7fb 0%, #e2e7ef 50%, #d0d8e4 100%);
+}
+
+body.dark {
+  color: #f6f7fb;
+  background: linear-gradient(135deg, #000000 0%, #12131a 50%, #1f222c 100%);
+}
+
+body.light header {
+  border-color: #000;
+}
+
+body.dark header {
+  border-color: #444;
+  background-color: rgba(15, 18, 28, 0.9);
+}
+
+body.light .title {
+  border-color: #000;
+}
+
+body.dark .title {
+  border-color: #444;
+}
+
+body.dark .theme-toggle {
+  color: #fff;
+  border-color: #666;
+}
+
+body.light .theme-toggle {
+  color: #000;
+  border-color: #333;
+}
+
+body.dark .search-box {
+  background: #23252f;
+  border-color: #444;
+}
+
+body.dark input {
+  background: #1a1c22;
+  color: #fff;
+}
+
+body.dark .search-btn i {
+  color: #fff;
+}
+
+body.light h1 {
+  color: #000;
+  background-color: #93da05ef;
+  border-color: #000;
+}
+
+body.dark h1 {
+  color: #f6f7fb;
+  background-color: #2b2f3b;
+  border-color: #666;
+}
+
+body.light p,
+body.light .sentence,
+body.light nav a,
+body.light .movie-title {
+  color: #111;
+}
+
+body.dark p,
+body.dark .sentence,
+body.dark nav a,
+body.dark .movie-title {
+  color: #e7e7e7;
+}
+
 h1 {
   font-family: "Bebas Neue", sans-serif;
   letter-spacing: 2px;
@@ -31,8 +108,9 @@ h1 {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
-  gap: 200px;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .header {
@@ -252,9 +330,40 @@ li i {
   transform: translateY(-10px);
 }
 
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.action-btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  background: #93da05ef;
+  color: #000;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.95);
+}
+
+.action-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
 .card {
-  min-width: 450px;
-  min-height: 600px;
+  width: 100%;
+  max-width: 360px;
+  min-height: 480px;
   background: rgba(255, 255, 255, 0.04);
   border-radius: 12px;
   cursor: pointer;
@@ -265,12 +374,14 @@ li i {
 
 .movie-poster {
   width: 100%;
+  max-width: 360px;
   background-size: cover;
   background-position: center;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
 }
 
 img {
