@@ -98,8 +98,8 @@ discover-movies/
 
 ## 👥 Team Members      
         Name              Role
-- 1 Ermiyas Getachew – Team leader
-- 
+- 1. Ermiyas Getachew – Team leader
+- 2. Kalkidan Asmamaw - Member
 -
 -
 -
