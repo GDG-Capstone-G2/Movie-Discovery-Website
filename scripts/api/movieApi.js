@@ -23,6 +23,7 @@ fetch("https://api.themoviedb.org/3/trending/movie/week", options)
 
 function loadHero(movies) {
   var hero = document.querySelector(".heroHeader");
+  if (!hero) return;
   var firstMovie = movies[0];
   var imageUrl =
     "https://image.tmdb.org/t/p/original" + firstMovie.backdrop_path;
