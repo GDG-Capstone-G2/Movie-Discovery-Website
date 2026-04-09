@@ -72,9 +72,9 @@ body.light h1 {
 }
 
 body.dark h1 {
-  color: #f6f7fb;
-  background-color: #2b2f3b;
-  border-color: #666;
+  color: #000;
+  background-color: #93da05ef;
+  border-color: #000;
 }
 
 body.light p,
@@ -84,9 +84,11 @@ body.light .movie-title {
   color: #111;
 }
 
+body.dark nav a{
+  color: #111;
+}
 body.dark p,
 body.dark .sentence,
-body.dark nav a,
 body.dark .movie-title {
   color: #e7e7e7;
 }
@@ -103,12 +105,12 @@ h1 {
 }
 
 .title {
-  border: 1px solid #000;
   padding: 0.5% 0%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
+  margin: 0% 10%;
   gap: 1rem;
   flex-wrap: wrap;
 }
@@ -146,7 +148,7 @@ header {
   justify-content: space-around;
   align-items: center;
   color: white;
-  max-height: 50vh;
+  max-height: 70vh;
   font-weight: 700;
   font-size: 18px;
   padding: 0px 10px 10px 10px;
@@ -194,7 +196,7 @@ input:focus {
 }
 
 .heroHeader {
-  height: 50vh;
+  height: 70vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -204,7 +206,6 @@ input:focus {
   justify-content: center;
   position: relative;
   border-radius: 12px;
-  transition: background-image 1s ease-in-out;
 }
 
 .heroHeader::before {
@@ -230,6 +231,8 @@ input:focus {
 
 .sentence {
   margin: 2%;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 22px;
 }
 
 main {
@@ -301,23 +304,9 @@ li i {
     filter 0.3s ease;
 }
 
-.see {
-  font-family: "Bebas Neue", sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  color: #90d308ef;
-  align-items: center;
-  cursor: pointer;
-}
-
-.see:hover {
-  filter: brightness(0.5);
-  transform: translateY(-10px);
-}
-
 .box {
-  min-width: 250px;
-  height: 300px;
+  min-width: 280px;
+  height: 350px;
   background: rgba(255, 255, 255, 0.04);
   border-radius: 12px;
   cursor: pointer;
@@ -362,8 +351,8 @@ li i {
 
 .card {
   width: 100%;
-  max-width: 360px;
-  min-height: 480px;
+  max-width: 400px;
+  min-height: 500px;
   background: rgba(255, 255, 255, 0.04);
   border-radius: 12px;
   cursor: pointer;
@@ -395,9 +384,10 @@ footer {
   text-align: center;
   padding: 15px;
   font-size: 16px;
-  color: rgb(0, 0, 0);
+  color: #93da05ef;
   border-radius: 5px;
+  border: #000 solid 1px;
   font-family: "Bebas Neue", sans-serif;
-  background-color: #93da05ef;
+  background-color: linear-gradient(135deg, #434343 0%, #434343 50%, #4e4e4e 100%);
   margin-top: 90px;
 }
