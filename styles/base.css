@@ -110,7 +110,7 @@ h1 {
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  margin: 0% 10% 5% 10%;
+  margin: 0% 10%;
   gap: 1rem;
   flex-wrap: wrap;
 }
@@ -148,7 +148,7 @@ header {
   justify-content: space-around;
   align-items: center;
   color: white;
-  margin: 0% 10%;
+  
   max-height: 65vh;
   font-weight: 700;
   font-size: 18px;
@@ -423,17 +423,18 @@ footer {
   );
   margin-top: 90px;
 }
-<<<<<<< HEAD
 
 @media (max-width: 600px) {
 body {
     margin: 0%;
     width: 100vw;
+    padding: 0px 10px;
+  } 
 }
 
 .title {
   display: flex;
-  flex-direction: column;
+  flex-direction: center;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -441,8 +442,10 @@ body {
   margin: 20px 0px;
 }
 
+.navbar {
+  flex-direction: center;
+  gap: 10px;
 }
-=======
 /* ABOUT PAGE FIX (MATCHES SITE DESIGN) */
 
 .about-container {
@@ -491,4 +494,3 @@ body.light .about-box {
   height: 3px; /* smaller */
   min-height: 2px;
 }
->>>>>>> 3efebbc (remove option)
