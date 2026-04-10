@@ -346,6 +346,16 @@ if (document.getElementById("trending-section")) {
 }
 
 loadMovieDetail();
+function fillAllMovies(sectionId, movies) {
+  var section = document.getElementById(sectionId);
+  if (!section) return;
+  section.innerHTML = "";
+  movies.forEach(function (movie) {
+    if (movie.poster_path) {
+      section.appendChild(createMovieCard(movie));
+    }
+  });
+}
 
 function fillAllMovies(sectionId, movies) {
   var section = document.getElementById(sectionId);
