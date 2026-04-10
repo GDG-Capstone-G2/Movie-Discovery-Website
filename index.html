@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie Discovery Webapp</title>
     <link rel="stylesheet" href="styles/base.css" />
-    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="styles/responsiveness.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
       rel="stylesheet"
@@ -86,5 +86,69 @@
     </footer>
     <script src="scripts/api/movieApi.js"></script>
     <script src="scripts/app.js"></script>
+    <canvas
+      id="sparkle-canvas"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+      "
+    ></canvas>
+    <script>
+      const canvas = document.getElementById("sparkle-canvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const stars = [];
+      for (let i = 0; i < 250; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 2.5 + 0.5,
+          alpha: Math.random(),
+          speed: Math.random() * 0.3 + 0.05,
+          twinkleSpeed: Math.random() * 0.02 + 0.005,
+          twinkleDir: Math.random() > 0.5 ? 1 : -1,
+        });
+      }
+
+      function drawStars() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        stars.forEach(function (star) {
+          star.alpha += star.twinkleSpeed * star.twinkleDir;
+          if (star.alpha >= 1) {
+            star.alpha = 1;
+            star.twinkleDir = -1;
+          }
+          if (star.alpha <= 0) {
+            star.alpha = 0;
+            star.twinkleDir = 1;
+          }
+          star.y -= star.speed;
+          if (star.y < 0) {
+            star.y = canvas.height;
+            star.x = Math.random() * canvas.width;
+          }
+          ctx.beginPath();
+          ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+          ctx.fillStyle =
+            "rgba(255, 220, 100, " + (star.alpha * 0.9 + 0.1) + ")";
+          ctx.fill();
+        });
+        requestAnimationFrame(drawStars);
+      }
+
+      drawStars();
+
+      window.addEventListener("resize", function () {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+    </script>
   </body>
 </html>

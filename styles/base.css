@@ -378,7 +378,7 @@ li i {
 
 .card {
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
   min-height: 500px;
   background: rgba(255, 255, 255, 0.04);
   border-radius: 12px;
@@ -424,73 +424,8 @@ footer {
   margin-top: 90px;
 }
 
-@media (max-width: 600px) {
-body {
-    margin: 0%;
-    width: 100vw;
-    padding: 0px 10px;
-  } 
-}
-
-.title {
-  display: flex;
-  flex-direction: center;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  gap: 10px;
-  margin: 20px 0px;
-}
-
-.navbar {
-  flex-direction: center;
-  gap: 10px;
-}
-/* ABOUT PAGE FIX (MATCHES SITE DESIGN) */
-
-.about-container {
-  max-width: 80%;
-  margin: 40px auto;
-}
-
-/* Use SAME style as .box (movie cards) */
-.about-box {
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 12px;
-  padding: 25px;
-  transition:
-    transform 0.3s ease,
-    filter 0.3s ease;
-}
-
-/* SAME hover as movie cards */
-.about-box:hover {
-  transform: translateY(-10px);
-  filter: brightness(0.8);
-}
-
-/* TEXT STYLE (match your site) */
-.about-box h2 {
-  font-family: "Bebas Neue", sans-serif;
-  margin-bottom: 10px;
-}
-
-.about-box p {
-  margin-bottom: 20px;
-  font-size: 16px;
-}
-
-/* DARK MODE */
-body.dark .about-box {
-  background: rgba(190, 40, 40, 0.04);
-}
-
-/* LIGHT MODE */
-body.light .about-box {
-  background: rgba(0, 0, 0, 0.05);
-}
-/* ABOUT PAGE HEADER FIX */
-.about-page .heroHeader {
-  height: 3px; /* smaller */
-  min-height: 2px;
+footer a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
 }
