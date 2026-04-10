@@ -1,0 +1,431 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: auto;
+  padding: 0px 20px;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(
+    135deg,
+    #000000 0%,
+    /* deep navy */ #1b1c20 50%,
+    /* near black */ #232324eb 100% /* soft contrast */
+  );
+}
+
+body.light {
+  color: #111;
+  background: linear-gradient(135deg, #f4f7fb 0%, #e2e7ef 50%, #d0d8e4 100%);
+}
+
+body.dark {
+  color: #f6f7fb;
+  background: linear-gradient(135deg, #000000 0%, #12131a 50%, #1f222c 100%);
+}
+
+body.light header {
+  border-color: #000;
+}
+
+body.dark header {
+  border-color: #444;
+  background-color: rgba(15, 18, 28, 0.9);
+}
+
+body.light .title {
+  border-color: #000;
+}
+
+body.dark .title {
+  border-color: #444;
+}
+
+body.dark .theme-toggle {
+  color: #fff;
+  border-color: #666;
+}
+
+body.light .theme-toggle {
+  color: #000;
+  border-color: #333;
+}
+
+body.dark .search-box {
+  background: #23252f;
+  border-color: #444;
+}
+
+body.dark input {
+  background: #1a1c22;
+  color: #fff;
+}
+
+body.dark .search-btn i {
+  color: #fff;
+}
+
+body.light h1 {
+  color: #000;
+  background-color: #93da05ef;
+  border-color: #000;
+}
+
+body.dark h1 {
+  color: #000;
+  background-color: #93da05ef;
+  border-color: #000;
+}
+
+body.light p,
+body.light .sentence,
+body.light nav a,
+body.light .movie-title {
+  color: #111;
+}
+
+body.dark nav a {
+  color: #111;
+}
+body.dark p,
+body.dark .sentence,
+body.dark .movie-title {
+  color: #e7e7e7;
+}
+
+h1 {
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 2px;
+  color: #000;
+  background-color: #93da05ef;
+  border: 2px #000 solid;
+  text-align: center;
+  padding: 1% 2%;
+  border-radius: 10px;
+}
+
+.title {
+  padding: 0.5% 0%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0% 10%;
+  gap: 10%;
+  flex-wrap: wrap;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+}
+
+/* Theme button */
+.theme-toggle {
+  font-size: 18px;
+  background: transparent;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+p {
+  color: #ffffffff;
+}
+/* header */
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  
+  max-height: 65vh;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 0px 10px 10px 10px;
+  border: 1px #000 solid;
+  border-radius: 8px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  width: 40%;
+  margin-top: 40px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  overflow: hidden;
+  background: #fff;
+}
+
+input {
+  flex: 1;
+  padding: 10px 12px;
+  border: none;
+  outline: none;
+}
+
+input:focus {
+  border: 2px solid #7aab00ef;
+  border-radius: 25px;
+}
+
+.search-btn {
+  background: none;
+  border: none;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.search-btn i {
+  color: #3b3a3a;
+}
+
+.search-btn:hover {
+  color: #000;
+}
+/* ---------- HERO HEADER ---------- */
+.heroHeader {
+  position: relative;
+  height: 75vh;                 /* shorter than before so header isn't too tall */
+  width: 100%;
+  overflow: hidden;             /* hides slides outside container */
+  border-radius: 12px;
+  margin-top: 20px;             /* space under header */
+}
+
+/* Hero slide style */
+.heroHeader .slide {
+  position: absolute;
+  top: 0;
+  left: 100%;                  /* start off-screen right */
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  transition: left 1.2s ease-in-out, opacity 1.2s ease-in-out;
+  opacity: 0;
+  z-index: 0;
+}
+
+.heroHeader .slide.active {
+  left: 0;                     /* move to visible */
+  opacity: 1;
+  z-index: 1;
+}
+
+.heroHeader .slide.prev {
+  left: -100%;                 /* slide out left */
+  opacity: 0;
+  z-index: 0;
+}
+
+/* Optional overlay for readability */
+.heroHeader::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(7, 7, 7, 0.2),
+    rgba(7, 7, 7, 0.7)
+  );
+  border-radius: 12px;
+  z-index: 0;
+}
+
+/* Hero text on top of slides */
+.heroHeader * {
+  position: relative;
+  z-index: 1;
+}
+
+.sentence {
+  margin: 2%;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 22px;
+}
+
+main {
+  max-width: 80%;
+  margin: 0% 12%;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style: none;
+  align-items: center;
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+li a,
+li i {
+  color: #000;
+  text-decoration: none;
+}
+
+.navbar li {
+  padding: 0.5% 2%;
+  margin: 0% 4%;
+  border: 1px solid #1b1c20;
+  border-radius: 5px;
+  color: rgb(0, 0, 0);
+  background-color: #93da05ef;
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.navbar li:hover {
+  filter: brightness(0.5);
+  transform: translateY(-10px);
+}
+
+.poster p {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #90d308ef;
+}
+
+.movies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+
+.see-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #b3b3b3;
+  margin: 0% 4%;
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.box {
+  min-width: 280px;
+  height: 350px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+.box:hover {
+  filter: brightness(0.5);
+  transform: translateY(-10px);
+}
+
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.action-btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  background: #93da05ef;
+  color: #000;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.95);
+}
+
+.action-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.card {
+  width: 100%;
+  max-width: 600px;
+  min-height: 500px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.movie-poster {
+  width: 100%;
+  max-width: 360px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 16px;
+  color: #93da05ef;
+  border-radius: 5px;
+  border: #000 solid 1px;
+  font-family: "Bebas Neue", sans-serif;
+  background-color: linear-gradient(
+    135deg,
+    #434343 0%,
+    #434343 50%,
+    #4e4e4e 100%
+  );
+  margin-top: 90px;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
