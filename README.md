@@ -102,6 +102,7 @@ discover-movies/
 - 2. Kalkidan Asmamaw - Member
   3. Christian Amare - Member
 - 4. Trufat Admasu  -  member
+  5. Fitsum Badeg  -  Member
 -
 -
 -
