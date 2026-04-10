@@ -5,11 +5,11 @@ const images = [
   "assets/images/img2.jpg",
   "assets/images/img3.jpg",
   "assets/images/img4.jpg",
-  "assets/images/img5.jpg"
+  "assets/images/img5.jpg",
 ];
 
 if (header) {
-  const slides = images.map(src => {
+  const slides = images.map((src) => {
     const div = document.createElement("div");
     div.classList.add("slide");
     div.style.backgroundImage = `url(${src})`;
@@ -108,18 +108,48 @@ let currentMovieDetail = null;
 function createMovieCard(movie) {
   var box = document.createElement("div");
   box.classList.add("box");
-
   var link = document.createElement("a");
   link.href = "movie.html?id=" + movie.id;
   link.classList.add("movie-link");
-  link.title = movie.title || movie.name || "View movie details";
 
   var img = document.createElement("img");
   img.src = "https://image.tmdb.org/t/p/w500" + movie.poster_path;
   img.alt = movie.title || movie.name || "Movie poster";
 
+  var info = document.createElement("div");
+  info.classList.add("card-info");
+
+  var title = document.createElement("p");
+  title.classList.add("card-title");
+  title.textContent = movie.title || movie.name || "Unknown";
+
+  var rating = document.createElement("p");
+  rating.classList.add("card-rating");
+  rating.textContent =
+    "⭐️ " +
+    (movie.vote_average ? movie.vote_average.toFixed(1) : "N/A") +
+    " | 👁 " +
+    (movie.vote_count ? movie.vote_count.toLocaleString() : "0");
+
+  var desc = document.createElement("p");
+  desc.classList.add("card-desc");
+  var overview = movie.overview || "No description available.";
+  desc.textContent =
+    overview.length > 40 ? overview.substring(0, 40) + "..." : overview;
+
+  var release = document.createElement("p");
+  release.classList.add("card-release");
+  release.textContent =
+    "📅 " +
+    (movie.release_date ? movie.release_date.substring(0, 4) : "Unknown");
+
+  info.appendChild(title);
+  info.appendChild(rating);
+  info.appendChild(desc);
+  info.appendChild(release);
   link.appendChild(img);
   box.appendChild(link);
+  box.appendChild(info);
   return box;
 }
 
@@ -220,10 +250,7 @@ function bindMovieDetailButtons() {
     watchButton.addEventListener("click", function () {
       if (!currentMovieDetail) return;
 
-      var inWatchlist = isMovieInList(
-        currentMovieDetail.id,
-        "watchlist"
-      );
+      var inWatchlist = isMovieInList(currentMovieDetail.id, "watchlist");
 
       if (inWatchlist) {
         removeMovieFromList(currentMovieDetail.id, "watchlist");
@@ -416,7 +443,7 @@ function renderSavedMovieList(key, emptyMessage) {
     return;
   }
   saved.forEach(function (movie) {
- var wrapper = document.createElement("div");
+    var wrapper = document.createElement("div");
     wrapper.style.position = "relative";
     wrapper.style.display = "inline-block";
 
@@ -459,7 +486,7 @@ function renderSavedMovieList(key, emptyMessage) {
     wrapper.appendChild(card);
     wrapper.appendChild(removeBtn);
     section.appendChild(wrapper);
-    });
+  });
 }
 
 loadPageSpecificMovies();
