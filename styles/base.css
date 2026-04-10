@@ -6,17 +6,13 @@ body {
   margin: auto;
   padding: 0px 20px;
   font-family: "Segoe UI", sans-serif;
-  background: linear-gradient(
-    135deg,
-    #000000 0%,
-    /* deep navy */ #1b1c20 50%,
-    /* near black */ #232324eb 100% /* soft contrast */
-  );
+  background: #714848;
 }
 
 body.light {
   color: #111;
-  background: linear-gradient(135deg, #f4f7fb 0%, #e2e7ef 50%, #d0d8e4 100%);
+  background-color: #11115c;
+  /*background: linear-gradient(135deg, #f4f7fb 0%, #e2e7ef 50%, #d0d8e4 100%); #947171    #23115f*/
 }
 
 body.dark {
@@ -67,13 +63,13 @@ body.dark .search-btn i {
 
 body.light h1 {
   color: #000;
-  background-color: #93da05ef;
+  background-color: #f5c518;
   border-color: #000;
 }
 
 body.dark h1 {
   color: #000;
-  background-color: #93da05ef;
+  background-color: #f5c518;
   border-color: #000;
 }
 
@@ -81,7 +77,7 @@ body.light p,
 body.light .sentence,
 body.light nav a,
 body.light .movie-title {
-  color: #111;
+  color: #d3bf76;
 }
 
 body.dark nav a {
@@ -96,12 +92,13 @@ body.dark .movie-title {
 h1 {
   font-family: "Bebas Neue", sans-serif;
   letter-spacing: 2px;
-  color: #000;
-  background-color: #93da05ef;
+  color: #f5c518;
+  background-color: transparent;
   border: 2px #000 solid;
   text-align: center;
   padding: 1% 2%;
   border-radius: 10px;
+  font-size: 32px;
 }
 
 .title {
@@ -215,6 +212,8 @@ input:focus {
   background-size: cover;
   background-position: center;
   border-radius: 12px;
+  margin: 0 0 16px 0;
+  width: 100%;
   transition: left 1.2s ease-in-out, opacity 1.2s ease-in-out;
   opacity: 0;
   z-index: 0;
@@ -256,9 +255,13 @@ input:focus {
 }
 
 .sentence {
-  margin: 2%;
+  margin: 16px 10%;
   font-family: "Bebas Neue", sans-serif;
-  font-size: 22px;
+  font-size: 20px;
+  color: #e0f7fa;
+  text-align: center;
+  letter-spacing: 1px;
+  padding: 0 20px;
 }
 
 main {
@@ -282,17 +285,17 @@ main {
 
 li a,
 li i {
-  color: #000;
+  color: inherit;
   text-decoration: none;
 }
 
 .navbar li {
   padding: 0.5% 2%;
   margin: 0% 4%;
-  border: 1px solid #1b1c20;
+  border: 1px solid #f5c518;
   border-radius: 5px;
-  color: rgb(0, 0, 0);
-  background-color: #93da05ef;
+  color: #f5c518;
+  background-color: transparent;
   transition:
     transform 0.3s ease,
     filter 0.3s ease;
@@ -307,14 +310,14 @@ li i {
   font-family: "Bebas Neue", sans-serif;
   font-weight: 700;
   font-size: 20px;
-  color: #90d308ef;
+  color: #f5c518;
 }
 
 .movies {
-  display: flex;
+  display: grid;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  grid-template-columns: repeat(5, minmax(150px, 1fr));
+  gap: 16px;
   padding: 20px;
 }
 
@@ -332,8 +335,8 @@ li i {
 }
 
 .box {
-  min-width: 280px;
-  height: 350px;
+  min-width: 100%;
+  height: 320px;
   background: rgba(255, 255, 255, 0.04);
   border-radius: 12px;
   cursor: pointer;
@@ -357,7 +360,7 @@ li i {
   padding: 10px 18px;
   border: none;
   border-radius: 10px;
-  background: #93da05ef;
+  background: #f5c518;
   color: #000;
   font-weight: 700;
   cursor: pointer;
@@ -411,7 +414,7 @@ footer {
   text-align: center;
   padding: 15px;
   font-size: 16px;
-  color: #93da05ef;
+  color: #e0f7fa;
   border-radius: 5px;
   border: #000 solid 1px;
   font-family: "Bebas Neue", sans-serif;
@@ -425,7 +428,7 @@ footer {
 }
 
 @media (max-width: 600px) {
-body {
+  body {
     margin: 0%;
     width: 100vw;
     padding: 0px 10px;

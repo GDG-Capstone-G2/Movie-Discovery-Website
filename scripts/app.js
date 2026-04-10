@@ -357,6 +357,17 @@ function fillAllMovies(sectionId, movies) {
   });
 }
 
+function fillAllMovies(sectionId, movies) {
+  var section = document.getElementById(sectionId);
+  if (!section) return;
+  section.innerHTML = "";
+  movies.forEach(function (movie) {
+    if (movie.poster_path) {
+      section.appendChild(createMovieCard(movie));
+    }
+  });
+}
+
 // PAGE-SPECIFIC MOVIES
 function loadPageSpecificMovies() {
   const pageTitle = document.getElementById("page-title");
@@ -371,7 +382,7 @@ function loadPageSpecificMovies() {
         return res.json();
       })
       .then(function (data) {
-        fillSection("listing-section", data.results);
+        fillAllMovies("listing-section", data.results);
       })
       .catch(function (err) {
         console.log("Error:", err);
@@ -416,7 +427,7 @@ function renderSavedMovieList(key, emptyMessage) {
     return;
   }
   saved.forEach(function (movie) {
- var wrapper = document.createElement("div");
+    var wrapper = document.createElement("div");
     wrapper.style.position = "relative";
     wrapper.style.display = "inline-block";
 
@@ -459,7 +470,7 @@ function renderSavedMovieList(key, emptyMessage) {
     wrapper.appendChild(card);
     wrapper.appendChild(removeBtn);
     section.appendChild(wrapper);
-    });
+  });
 }
 
 loadPageSpecificMovies();

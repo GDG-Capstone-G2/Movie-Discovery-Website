@@ -1,6 +1,7 @@
 # 🎬 Movie Discovery Website
 
 ## 📌 Project Overview
+
 The Movie Discovery Website is a web application that allows users to search for movies and view detailed information such as posters, release dates, ratings, and descriptions.
 
 This project was developed as part of the **GDG Beginner Track 2026 Capstone Project** using HTML, CSS, and JavaScript with an external movie API.
@@ -10,21 +11,26 @@ This project was developed as part of the **GDG Beginner Track 2026 Capstone Pro
 ## 🚀 Features
 
 ### 🔍 Movie Search
+
 - Search movies by title
 - Display results dynamically
 - Handles empty input and invalid searches
 
 ### 🎞️ Movie Cards
+
 Each movie includes:
+
 - Poster image
 - Title
 
 ### 📂 Categories
+
 - Popular Movies
 - Top Rated Movies
 - Now Playing/Trending
 
 ### 📄 Movie Details Page
+
 - Poster
 - Title
 - Release date
@@ -32,14 +38,17 @@ Each movie includes:
 - Full overview
 
 ### ⭐ Watchlist
+
 - Add movies to watchlist
 - Remove movies
 - Stored using LocalStorage
 
 ### 📱 Responsive Design
+
 - Works on desktop, tablet, and mobile devices
 
 ### ⚙️ Interactive Features
+
 - Fetch API integration
 - Dynamic DOM updates
 - Error handling
@@ -47,6 +56,7 @@ Each movie includes:
 ---
 
 ## 🛠️ Technologies Used
+
 - HTML5
 - CSS3
 - JavaScript (ES6)
@@ -55,6 +65,7 @@ Each movie includes:
 ---
 
 ## 📁 Project Structure
+
 discover-movies/
 │
 ├── index.html
@@ -78,6 +89,7 @@ discover-movies/
 ---
 
 ## 🧪 Testing
+
 - Tested movie search functionality
 - Verified API responses
 - Checked responsiveness on different devices
@@ -86,6 +98,7 @@ discover-movies/
 ---
 
 ## 🌟 Optional Enhancements
+
 - Dark mode toggle
 - Loader animation
 - Smooth transitions
@@ -93,7 +106,8 @@ discover-movies/
 
 ---
 
-## 👥 Team Members      
+## 👥 Team Members
+
         Name              Role
 - 1. Ermiyas Getachew – Team leader
 - 2. Kalkidan Asmamaw - Member
