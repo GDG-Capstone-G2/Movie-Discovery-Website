@@ -284,7 +284,7 @@ function fillSection(sectionId, movies) {
   section.innerHTML = "";
   var count = 0;
   movies.forEach(function (movie) {
-    if (movie.poster_path && count < 5) {
+    if (movie.poster_path && count < 20) {
       section.appendChild(createMovieCard(movie));
       count++;
     }
@@ -333,7 +333,7 @@ function loadMovieDetail() {
 
 // TRENDING MOVIES
 if (document.getElementById("trending-section")) {
-  fetch("https://api.tmdb.org/3/trending/movie/week", options)
+  fetch("https://api.themoviedb.org/3/trending/movie/week", options)
     .then(function (res) {
       return res.json();
     })
@@ -346,6 +346,16 @@ if (document.getElementById("trending-section")) {
 }
 
 loadMovieDetail();
+function fillAllMovies(sectionId, movies) {
+  var section = document.getElementById(sectionId);
+  if (!section) return;
+  section.innerHTML = "";
+  movies.forEach(function (movie) {
+    if (movie.poster_path) {
+      section.appendChild(createMovieCard(movie));
+    }
+  });
+}
 
 // PAGE-SPECIFIC MOVIES
 function loadPageSpecificMovies() {
@@ -372,7 +382,7 @@ function loadPageSpecificMovies() {
         return res.json();
       })
       .then(function (data) {
-        fillSection("listing-section", data.results);
+        fillAllMovies("listing-section", data.results);
       })
       .catch(function (err) {
         console.log("Error:", err);
@@ -406,8 +416,50 @@ function renderSavedMovieList(key, emptyMessage) {
     return;
   }
   saved.forEach(function (movie) {
-    section.appendChild(createMovieCard(movie));
-  });
+ var wrapper = document.createElement("div");
+    wrapper.style.position = "relative";
+    wrapper.style.display = "inline-block";
+
+    var card = createMovieCard(movie);
+
+    var removeBtn = document.createElement("button");
+    removeBtn.textContent = "✕";
+    removeBtn.style.position = "absolute";
+    removeBtn.style.top = "8px";
+    removeBtn.style.right = "8px";
+    removeBtn.style.background = "rgba(0,0,0,0.7)";
+    removeBtn.style.color = "white";
+    removeBtn.style.border = "none";
+    removeBtn.style.borderRadius = "50%";
+    removeBtn.style.width = "28px";
+    removeBtn.style.height = "28px";
+    removeBtn.style.cursor = "pointer";
+    removeBtn.style.fontSize = "14px";
+    removeBtn.style.zIndex = "10";
+    removeBtn.style.transition = "background 0.2s ease";
+
+    removeBtn.addEventListener("mouseenter", function () {
+      removeBtn.style.background = "#e53935";
+    });
+    removeBtn.addEventListener("mouseleave", function () {
+      removeBtn.style.background = "rgba(0,0,0,0.7)";
+    });
+
+    removeBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var stored = getStoredMovies(key);
+      var updated = stored.filter(function (m) {
+        return m.id !== movie.id;
+      });
+      saveStoredMovies(key, updated);
+      renderSavedMovieList(key, emptyMessage);
+    });
+
+    wrapper.appendChild(card);
+    wrapper.appendChild(removeBtn);
+    section.appendChild(wrapper);
+    });
 }
 
 loadPageSpecificMovies();
