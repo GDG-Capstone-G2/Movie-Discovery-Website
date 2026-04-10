@@ -73,10 +73,7 @@ discover-movies/
 │
 ├── scripts/
 │ ├── app.js
-│ ├── api.js
-│ ├── ui.js
-│ ├── watchlist.js
-│ └── theme.js
+│ └── api.js
 
 ---
 
@@ -100,10 +97,10 @@ discover-movies/
         Name              Role
 - 1. Ermiyas Getachew – Team leader
 - 2. Kalkidan Asmamaw - Member
-  3. Christian Amare - Member
+- 3. Christian Amare - Member
 - 4. Trufat Admasu  -  member
-  5. Fitsum Badeg  -  Member
--
+- 5. Fitsum Badeg  -  Member
+- 6. Betelhem Solomon - Member
 -
 -
 
