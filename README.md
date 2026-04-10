@@ -112,10 +112,13 @@ discover-movies/
 ## 👥 Team Members
 
         Name              Role
-
-- 1 Ermiyas Getachew – Team leader
+- 1. Ermiyas Getachew – Team leader
 - 2 Betelhem Solomon - Member
+- 3. Kalkidan Asmamaw - Member
+- 4. Christian Amare - Member
+- 5. Trufat Admasu  -  member
 -
 -
 -
-- ***
+
+---

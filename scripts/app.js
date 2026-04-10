@@ -1,36 +1,40 @@
-// HERO BACKGROUND SLIDER
+// HERO SLIDER
 const header = document.querySelector(".heroHeader");
 const images = [
   "assets/images/img1.jpg",
   "assets/images/img2.jpg",
   "assets/images/img3.jpg",
   "assets/images/img4.jpg",
-  "assets/images/img5.jpg",
-  "assets/images/img6.jpg",
-  "assets/images/img7.jpg",
-  "assets/images/img8.jpg",
+  "assets/images/img5.jpg"
 ];
 
-let index = 0;
-
 if (header) {
-  header.style.backgroundImage = `url(${images[index]})`;
-  header.style.backgroundSize = "cover";
-  header.style.backgroundPosition = "center";
+  const slides = images.map(src => {
+    const div = document.createElement("div");
+    div.classList.add("slide");
+    div.style.backgroundImage = `url(${src})`;
+    header.appendChild(div); // ONLY hero slides
+    return div;
+  });
 
-  function changeBackground() {
-    index = (index + 1) % images.length;
+  let current = 0;
+  slides[current].classList.add("active");
 
-    header.style.transition = "opacity 0.6s ease-in-out";
-    header.style.opacity = "0.2";
+  function nextSlide() {
+    const prev = current;
+    current = (current + 1) % slides.length;
+
+    slides[prev].classList.remove("active");
+    slides[prev].classList.add("prev");
+
+    slides[current].classList.add("active");
 
     setTimeout(() => {
-      header.style.backgroundImage = `url(${images[index]})`;
-      header.style.opacity = "1";
-    }, 600);
+      slides[prev].classList.remove("prev");
+    }, 1200);
   }
 
-  setInterval(changeBackground, 4000);
+  setInterval(nextSlide, 4000);
 }
 
 // THEME TOGGLE
@@ -156,25 +160,39 @@ function addMovieToList(movie, key) {
     saveStoredMovies(key, stored);
   }
 }
+function removeMovieFromList(movieId, key) {
+  var stored = getStoredMovies(key);
 
+  stored = stored.filter(function (movie) {
+    return movie.id !== movieId;
+  });
+
+  saveStoredMovies(key, stored);
+}
 function updateMovieButtons() {
   var favButton = document.getElementById("addToFavorites");
   var watchButton = document.getElementById("addToWatchlist");
+
   if (!currentMovieDetail) return;
 
   if (favButton) {
     var favorited = isMovieInList(currentMovieDetail.id, "favorites");
+
     favButton.textContent = favorited
-      ? "Added to Favorites"
-      : "Add to Favorites";
-    favButton.disabled = favorited;
+      ? "❌ Remove from Favorites"
+      : "⭐ Add to Favorites";
+
+    favButton.disabled = false; // 🔥 IMPORTANT (remove disable)
   }
+
   if (watchButton) {
     var inWatchlist = isMovieInList(currentMovieDetail.id, "watchlist");
+
     watchButton.textContent = inWatchlist
-      ? "Added to Watchlist"
-      : "Add to Watchlist";
-    watchButton.disabled = inWatchlist;
+      ? "❌ Remove from Watchlist"
+      : "🎬 Add to Watchlist";
+
+    watchButton.disabled = false; // 🔥 IMPORTANT
   }
 }
 
@@ -185,7 +203,15 @@ function bindMovieDetailButtons() {
   if (favButton) {
     favButton.addEventListener("click", function () {
       if (!currentMovieDetail) return;
-      addMovieToList(currentMovieDetail, "favorites");
+
+      var favorited = isMovieInList(currentMovieDetail.id, "favorites");
+
+      if (favorited) {
+        removeMovieFromList(currentMovieDetail.id, "favorites");
+      } else {
+        addMovieToList(currentMovieDetail, "favorites");
+      }
+
       updateMovieButtons();
     });
   }
@@ -193,7 +219,18 @@ function bindMovieDetailButtons() {
   if (watchButton) {
     watchButton.addEventListener("click", function () {
       if (!currentMovieDetail) return;
-      addMovieToList(currentMovieDetail, "watchlist");
+
+      var inWatchlist = isMovieInList(
+        currentMovieDetail.id,
+        "watchlist"
+      );
+
+      if (inWatchlist) {
+        removeMovieFromList(currentMovieDetail.id, "watchlist");
+      } else {
+        addMovieToList(currentMovieDetail, "watchlist");
+      }
+
       updateMovieButtons();
     });
   }
